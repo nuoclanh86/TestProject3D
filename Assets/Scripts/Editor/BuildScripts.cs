@@ -23,4 +23,15 @@ public class BuildScripts
 		buildPlayerOptions.scenes = new[] { "Assets/Scene1.unity", "Assets/Scene2.unity" };
 		BuildPipeline.BuildPlayer(buildPlayerOptions);
 	}
+	
+	public static void PerformSwitchIos()
+    {
+        EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
+    }
+	
+	public static void PerformBuildXcodeProject ()
+	{
+		string[] defaultScene = { "Assets/Scenes/MainScene.unity" };
+		BuildPipeline.BuildPlayer(defaultScene, "build/ios/xcode", BuildTarget.iOS, BuildOptions.Development);
+	}
 }
