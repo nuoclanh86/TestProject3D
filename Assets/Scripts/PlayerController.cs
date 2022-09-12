@@ -7,11 +7,29 @@ public class PlayerController : NetworkBehaviour
 {
     public float speed = 1.0f;
     public new TextMesh name;
+
     Vector3 move;
+    private NetworkVariable<Vector3> nwPosition;
+
+    private void Awake()
+    {
+        nwPosition = new NetworkVariable<Vector3>();
+    }
+
+    private void OnEnable()
+    {
+        nwPosition.OnValueChanged += OnPositionChanged;
+    }
+
+    private void OnDisable()
+    {
+        nwPosition.OnValueChanged -= OnPositionChanged;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        string nametxt = "Player0" + (int)Random.Range(0.0f, 99.0f);
+        string nametxt = "Player " + (int)Random.Range(10.0f, 99.0f);
         SetNameClientRpc(nametxt);
     }
 
@@ -47,5 +65,12 @@ public class PlayerController : NetworkBehaviour
     public void UpdatePositionServerRpc(Vector3 pos)
     {
         this.transform.position = pos;
+        nwPosition.Value = pos;
+    }
+
+    private void OnPositionChanged(Vector3 old, Vector3 latest)
+    {
+        if (!IsServer && !IsOwner)
+            this.transform.position = latest;
     }
 }
