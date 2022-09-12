@@ -13,8 +13,8 @@ public class PlayerController : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string nametxt = "Player " + (int)Random.Range(10.0f, 99.0f);
-        SetNameClientRpc(nametxt);
+        //int nameNo = (int)Random.Range(10.0f, 99.0f);
+        //SetName(nameNo);
     }
 
     // Update is called once per frame
@@ -33,17 +33,12 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
-    [ClientRpc]
-    public void SetNameClientRpc(string nametxt)
-    {
-        SetName(nametxt);
-    }
-
-    public void SetName(string nametxt)
-    {
-        name.text = nametxt;
-        this.gameObject.name = nametxt;
-    }
+    //public void SetName(int nameNo)
+    //{
+    //    string playerName = "Player" + nameNo;
+    //    name.text = playerName;
+    //    this.gameObject.name = playerName;
+    //}
 
     [ServerRpc]
     public void UpdatePositionServerRpc(Vector3 pos)

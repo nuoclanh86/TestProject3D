@@ -5,6 +5,9 @@ using Unity.Netcode;
 
 public class PlayerNetworkTransform : NetworkBehaviour
 {
+    public bool syncPosition = true;
+
+    [HideInInspector]
     public NetworkVariable<Vector3> nwPosition;
 
     private void Awake()
@@ -24,7 +27,7 @@ public class PlayerNetworkTransform : NetworkBehaviour
 
     private void OnPositionChanged(Vector3 old, Vector3 latest)
     {
-        if (!IsServer && !IsOwner)
+        if (syncPosition && !IsServer && !IsOwner)
             this.transform.position = latest;
     }
 }
