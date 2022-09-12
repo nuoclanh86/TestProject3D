@@ -18,15 +18,13 @@ public class PlayerController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (IsOwner)
-        //{
-        move = Vector3.zero;
-        move.x = Input.GetAxis("Horizontal");
-        move.y = Input.GetAxis("Vertical");
-        this.transform.position += move * speed;
-        //}
-        //else
-        //    this.GetComponent<PlayerController>().enabled = false;
+        if (IsOwner)
+        {
+            move = Vector3.zero;
+            move.x = Input.GetAxis("Horizontal");
+            move.y = Input.GetAxis("Vertical");
+            this.transform.position += move * speed;
+        }
     }
 
     [ClientRpc]
