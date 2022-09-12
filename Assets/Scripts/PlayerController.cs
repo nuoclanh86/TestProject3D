@@ -18,12 +18,16 @@ public class PlayerController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsOwner)
+        if (!IsServer)
         {
-            move = Vector3.zero;
-            move.x = Input.GetAxis("Horizontal");
-            move.y = Input.GetAxis("Vertical");
-            this.transform.position += move * speed;
+            if (IsOwner)
+            {
+                move = Vector3.zero;
+                move.x = Input.GetAxis("Horizontal");
+                move.y = Input.GetAxis("Vertical");
+                this.transform.position += move * speed;
+                UpdatePositionServerRpc(this.transform.position);
+            }
         }
     }
 
@@ -37,5 +41,11 @@ public class PlayerController : NetworkBehaviour
     {
         name.text = nametxt;
         this.gameObject.name = nametxt;
+    }
+
+    [ServerRpc]
+    public void UpdatePositionServerRpc(Vector3 pos)
+    {
+        this.transform.position = pos;
     }
 }
