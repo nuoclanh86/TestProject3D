@@ -3,22 +3,32 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
+public enum PlayerState
+{
+    IDLE=0,
+    MOVE
+}
+
 public class PlayerController : NetworkBehaviour
 {
     public float speed = 1.0f;
-    public new TextMesh name;
+    //public new TextMesh nameTxt;
+    public Animator playerAnimator;
 
     Vector3 move;
 
     // Start is called before the first frame update
     void Start()
     {
-        //int nameNo = (int)Random.Range(10.0f, 99.0f);
-        //SetName(nameNo);
         if (IsOwner)
             enabled = true;
         else
             enabled = false;
+
+        //int nameNo = (int)Random.Range(10.0f, 99.0f);
+        //SetName(nameNo);
+
+        playerAnimator.SetInteger("PlayerState", (int)PlayerState.IDLE);
     }
 
     // Update is called once per frame
@@ -31,16 +41,20 @@ public class PlayerController : NetworkBehaviour
                 move = Vector3.zero;
                 move.x = Input.GetAxis("Horizontal");
                 move.y = Input.GetAxis("Vertical");
-                this.transform.position += move * speed;
+                this.transform.position += move * speed * Time.deltaTime;
+                playerAnimator.SetInteger("PlayerState", (int)PlayerState.MOVE);
                 this.GetComponent<PlayerNetworkTransform>().UpdatePositionServerRpc(this.transform.position);
             }
+
+            if (move == Vector3.zero)
+                playerAnimator.SetInteger("PlayerState", (int)PlayerState.IDLE);
         }
     }
 
     //public void SetName(int nameNo)
     //{
     //    string playerName = "Player" + nameNo;
-    //    name.text = playerName;
+    //    nameTxt.text = playerName;
     //    this.gameObject.name = playerName;
     //}
 }
