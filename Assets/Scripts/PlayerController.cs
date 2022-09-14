@@ -42,12 +42,12 @@ public class PlayerController : NetworkBehaviour
                 move.x = Input.GetAxis("Horizontal");
                 move.y = Input.GetAxis("Vertical");
                 this.transform.position += move * speed * Time.deltaTime;
-                playerAnimator.SetInteger("PlayerState", (int)PlayerState.MOVE);
+                ToggleAnimationServerRpc((int)PlayerState.MOVE);
                 this.GetComponent<PlayerNetworkTransform>().UpdatePositionServerRpc(this.transform.position);
             }
 
             if (move == Vector3.zero)
-                playerAnimator.SetInteger("PlayerState", (int)PlayerState.IDLE);
+                ToggleAnimationServerRpc((int)PlayerState.IDLE);
         }
     }
 
@@ -57,4 +57,15 @@ public class PlayerController : NetworkBehaviour
     //    nameTxt.text = playerName;
     //    this.gameObject.name = playerName;
     //}
+
+    private void ToggleAnimation(int ps)
+    {
+        playerAnimator.SetInteger("PlayerState", ps);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void ToggleAnimationServerRpc(int ps)
+    {
+        ToggleAnimation(ps);
+    }
 }
