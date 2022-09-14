@@ -30,4 +30,11 @@ public class PlayerNetworkTransform : NetworkBehaviour
         if (syncPosition && !IsServer && !IsOwner)
             this.transform.position = latest;
     }
+
+    [ServerRpc]
+    public void UpdatePositionServerRpc(Vector3 pos)
+    {
+        this.transform.position = pos;
+        this.GetComponent<PlayerNetworkTransform>().nwPosition.Value = pos;
+    }
 }

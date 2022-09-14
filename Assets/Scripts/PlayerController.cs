@@ -15,6 +15,10 @@ public class PlayerController : NetworkBehaviour
     {
         //int nameNo = (int)Random.Range(10.0f, 99.0f);
         //SetName(nameNo);
+        if (IsOwner)
+            enabled = true;
+        else
+            enabled = false;
     }
 
     // Update is called once per frame
@@ -28,7 +32,7 @@ public class PlayerController : NetworkBehaviour
                 move.x = Input.GetAxis("Horizontal");
                 move.y = Input.GetAxis("Vertical");
                 this.transform.position += move * speed;
-                UpdatePositionServerRpc(this.transform.position);
+                this.GetComponent<PlayerNetworkTransform>().UpdatePositionServerRpc(this.transform.position);
             }
         }
     }
@@ -39,11 +43,4 @@ public class PlayerController : NetworkBehaviour
     //    name.text = playerName;
     //    this.gameObject.name = playerName;
     //}
-
-    [ServerRpc]
-    public void UpdatePositionServerRpc(Vector3 pos)
-    {
-        this.transform.position = pos;
-        this.GetComponent<PlayerNetworkTransform>().nwPosition.Value = pos;
-    }
 }
