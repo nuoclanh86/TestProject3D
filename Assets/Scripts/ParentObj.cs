@@ -39,6 +39,7 @@ public class ParentObj : NetworkBehaviour
         if (IsServer)
         {
             go = Instantiate(prefabTest, Vector3.up, Quaternion.identity);
+            go.GetComponent<ObstacleNetworkController>().SetNetworkObjParent(this.transform);
             go.GetComponent<NetworkObject>().Spawn(true);
         }
     }
@@ -51,12 +52,12 @@ public class ParentObj : NetworkBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (!IsServer) return;
-        if (go != null && go.GetComponent<NetworkObject>().IsSpawned)
-        {
-            Debug.Log(go.GetComponent<NetworkObject>().TrySetParent(this.gameObject.GetComponent<NetworkObject>()));
-        }
-    }
+    // private void Update()
+    // {
+    //     if (!IsServer) return;
+    //     if (go != null && go.GetComponent<NetworkObject>().IsSpawned)
+    //     {
+    //         Debug.Log(go.GetComponent<NetworkObject>().TrySetParent(this.gameObject.GetComponent<NetworkObject>()));
+    //     }
+    // }
 }
