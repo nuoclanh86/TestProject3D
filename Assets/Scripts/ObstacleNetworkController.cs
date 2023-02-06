@@ -18,8 +18,8 @@ public class ObstacleNetworkController : NetworkBehaviour
     {
         Debug.Log("SetNetworkObjParent : " + parent.gameObject.name);
         m_thisParent = parent;
-        if (m_thisParent != null)
-            Debug.Log("SetNetworkObjParent : m_thisParent != null");
+        // if (m_thisParent != null)
+        //     Debug.Log("SetNetworkObjParent : m_thisParent != null");
     }
 
     [ClientRpc]
