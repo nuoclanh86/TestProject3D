@@ -5,6 +5,13 @@ using Unity.Netcode;
 
 public class UI_Controller : MonoBehaviour
 {
+    // Start is called before the first frame update
+    void Start()
+    {
+        btnMainMenu.gameObject.SetActive(true);
+        btnIngame.gameObject.SetActive(false);
+    }
+
     public NetworkManager nwManager;
     [SerializeField] GameObject btnMainMenu, btnIngame;
 

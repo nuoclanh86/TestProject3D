@@ -41,10 +41,10 @@ public class ObstacleNetworkController : NetworkBehaviour
                 else
                     Debug.Log("ObstacleNetworkController : " + this.name + " / failed");
             }
-            else
-            {
-                Debug.Log("TrySetParent : " + this.name + " failed . Parent == null");
-            }
+            // else
+            // {
+            //     Debug.Log("TrySetParent : " + this.name + " failed . Parent == null");
+            // }
 
             string name = "null";
             if (m_thisParent != null)
