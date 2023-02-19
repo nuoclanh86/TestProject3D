@@ -40,7 +40,7 @@ public class PlayerController : NetworkBehaviour
             {
                 move = Vector3.zero;
                 move.x = Input.GetAxis("Horizontal");
-                move.y = Input.GetAxis("Vertical");
+                move.z = Input.GetAxis("Vertical");
                 this.transform.position += move * speed * Time.deltaTime;
                 ToggleAnimationServerRpc((int)PlayerState.MOVE);
                 this.GetComponent<PlayerNetworkTransform>().UpdatePositionServerRpc(this.transform.position);
