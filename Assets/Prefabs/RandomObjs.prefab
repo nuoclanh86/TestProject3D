@@ -123,7 +123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2064198382885130381, guid: 2263eba6a6a116940acce326d9e3326e, type: 3}
       propertyPath: m_Name
-      value: Cube (1)
+      value: Position (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8916513191308358097, guid: 2263eba6a6a116940acce326d9e3326e, type: 3}
       propertyPath: GlobalObjectIdHash
@@ -189,7 +189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2064198382885130381, guid: 2263eba6a6a116940acce326d9e3326e, type: 3}
       propertyPath: m_Name
-      value: Cube (3)
+      value: Position (3)
       objectReference: {fileID: 0}
     - target: {fileID: 6951794753442920820, guid: 2263eba6a6a116940acce326d9e3326e, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -259,7 +259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2064198382885130381, guid: 2263eba6a6a116940acce326d9e3326e, type: 3}
       propertyPath: m_Name
-      value: Cube (2)
+      value: Position (2)
       objectReference: {fileID: 0}
     - target: {fileID: 6951794753442920820, guid: 2263eba6a6a116940acce326d9e3326e, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -329,7 +329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2064198382885130381, guid: 2263eba6a6a116940acce326d9e3326e, type: 3}
       propertyPath: m_Name
-      value: Cube (6)
+      value: Position (6)
       objectReference: {fileID: 0}
     - target: {fileID: 8916513191308358097, guid: 2263eba6a6a116940acce326d9e3326e, type: 3}
       propertyPath: GlobalObjectIdHash
@@ -395,7 +395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2064198382885130381, guid: 2263eba6a6a116940acce326d9e3326e, type: 3}
       propertyPath: m_Name
-      value: Cube (4)
+      value: Position (4)
       objectReference: {fileID: 0}
     - target: {fileID: 6951794753442920820, guid: 2263eba6a6a116940acce326d9e3326e, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -465,7 +465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2064198382885130381, guid: 2263eba6a6a116940acce326d9e3326e, type: 3}
       propertyPath: m_Name
-      value: Cube (7)
+      value: Position (7)
       objectReference: {fileID: 0}
     - target: {fileID: 8916513191308358097, guid: 2263eba6a6a116940acce326d9e3326e, type: 3}
       propertyPath: GlobalObjectIdHash
@@ -531,7 +531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2064198382885130381, guid: 2263eba6a6a116940acce326d9e3326e, type: 3}
       propertyPath: m_Name
-      value: Cube (5)
+      value: Position (5)
       objectReference: {fileID: 0}
     - target: {fileID: 6951794753442920820, guid: 2263eba6a6a116940acce326d9e3326e, type: 3}
       propertyPath: m_Materials.Array.data[0]

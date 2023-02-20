@@ -14,47 +14,7 @@ public class testrandom : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // if (GameManager.Instance.mIsMulti && !GameNetManager.Instance.IsServerSide())
-        if (!IsServer || IsServer) // temp : do not run in start
-            return;
-
-        if (defaultDisplayIndex >= this.transform.childCount || numChildDisplay > this.transform.childCount)
-        {
-            Debug.LogError("[AAF] Error : defaultDisplayIndex or numChildDisplay > childCount");
-            return;
-        }
-
-        // Debug.Log("[AAF] ObstacleRandom : " + this.name);
-        m_listIndexChildObjectDisplay = new List<int>();
-
-        if (defaultDisplayIndex != -1)
-        {
-            // DisplayIndexChild(defaultDisplayIndex);
-            m_listIndexChildObjectDisplay.Add(defaultDisplayIndex);
-        }
-        else
-        {
-            // DisplayRandomIndexChild(numChildDisplay, deleteNonDisplayChild);
-            RandomIndexChild(numChildDisplay);
-        }
-
-        // if (!GameManager.Instance.mIsMulti)
-        // {
-        //     DisplayIndexChildren(m_listIndexChildObjectDisplay);
-        //     if (deleteNonDisplayChild == true)
-        //     {
-        //         DestroyNonDisplayChild();
-        //     }
-        // }
-        // else
-        // {
-        //     DisplayIndexChildrenServer(m_listIndexChildObjectDisplay);
-        //     if (deleteNonDisplayChild == true)
-        //     {
-        //         DestroyNonDisplayChild();
-        //         DestroyNonDisplayChildClientRpc();
-        //     }
-        // }
+       
     }
 
     public override void OnNetworkSpawn()
@@ -96,43 +56,12 @@ public class testrandom : NetworkBehaviour
             PrintLogServerClientRpc("m_listIndexChildObjectDisplay: " + t);
         }
 
-        // if (!GameManager.Instance.mIsMulti)
-        // {
-        //     DisplayIndexChildren(m_listIndexChildObjectDisplay);
-        //     if (deleteNonDisplayChild == true)
-        //     {
-        //         DestroyNonDisplayChild();
-        //     }
-        // }
-        // else
-        // {
         DisplayIndexChildrenServer(m_listIndexChildObjectDisplay);
 
         if (deleteNonDisplayChild == true)
         {
             DestroyNonDisplayChild();
             DestroyNonDisplayChildClientRpc();
-        }
-    }
-
-    void DisplayIndexChildren(List<int> listIndexChildObjectDisplay)
-    {
-        if (listIndexChildObjectDisplay.Count <= 0)
-            Debug.LogError("[AAF] DisplayIndexChildren listIndexChildObjectDisplay : " + listIndexChildObjectDisplay.Count + " - " + this.name);
-        int indexChildObjectDisplay = 0;
-        for (int i = 0; i < this.transform.childCount; i++)
-        {
-            GameObject childObj = this.transform.GetChild(i).gameObject;
-            if (i == listIndexChildObjectDisplay[indexChildObjectDisplay])
-            {
-                if (indexChildObjectDisplay < listIndexChildObjectDisplay.Count - 1)
-                    indexChildObjectDisplay++;
-                childObj.SetActive(true);
-            }
-            else
-            {
-                childObj.SetActive(false);
-            }
         }
     }
 
@@ -181,19 +110,6 @@ public class testrandom : NetworkBehaviour
         }
     }
 
-    void DisplayIndexChild(int indexChildObject, int indexChildObjectDisplay)
-    {
-        GameObject childObj = this.transform.GetChild(indexChildObject).gameObject;
-        if (indexChildObject == indexChildObjectDisplay)
-        {
-            childObj.SetActive(true);
-        }
-        else
-        {
-            childObj.SetActive(false);
-        }
-    }
-
     void DestroyNonDisplayChild()
     {
         for (int i = this.transform.childCount - 1; i >= 0; i--)
@@ -227,10 +143,4 @@ public class testrandom : NetworkBehaviour
             m_listIndexChildObjectDisplay.Remove(m_listIndexChildObjectDisplay[randomVal]);
         }
     }
-
-    // Update is called once per frame
-    // void Update()
-    // {
-
-    // }
 }
