@@ -14,7 +14,7 @@ public class testrandom : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+
     }
 
     public override void OnNetworkSpawn()
@@ -98,7 +98,7 @@ public class testrandom : NetworkBehaviour
     [ClientRpc]
     void DisplayIndexChildClientRpc(int indexChildObject, int indexChildObjectDisplay)
     {
-        Debug.Log("DisplayIndexChildClientRpc : " + indexChildObject + " - " + indexChildObjectDisplay);
+        // Debug.Log("DisplayIndexChildClientRpc : " + indexChildObject + " - " + indexChildObjectDisplay);
         GameObject childObj = this.transform.GetChild(indexChildObject).gameObject;
         if (indexChildObject == indexChildObjectDisplay)
         {
@@ -141,6 +141,18 @@ public class testrandom : NetworkBehaviour
             int randomVal = Random.Range(0, m_listIndexChildObjectDisplay.Count);
             numToRemove--;
             m_listIndexChildObjectDisplay.Remove(m_listIndexChildObjectDisplay[randomVal]);
+        }
+    }
+
+    public void SpawmItemsInChildrenObj()
+    {
+        if (IsServer)
+        {
+            foreach (Transform child in this.transform)
+            {
+                if (child.gameObject.activeInHierarchy == true)
+                    child.GetComponent<SpawnPoint>().SpawnItem();
+            }
         }
     }
 }
