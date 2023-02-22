@@ -50,11 +50,11 @@ public class testrandom : NetworkBehaviour
             RandomIndexChild(numChildDisplay);
         }
 
-        foreach (int t in m_listIndexChildObjectDisplay)
-        {
-            Debug.Log("m_listIndexChildObjectDisplay: " + t);
-            PrintLogServerClientRpc("m_listIndexChildObjectDisplay: " + t);
-        }
+        // foreach (int t in m_listIndexChildObjectDisplay)
+        // {
+        //     Debug.Log("m_listIndexChildObjectDisplay: " + t);
+        //     PrintLogServerClientRpc("m_listIndexChildObjectDisplay: " + t);
+        // }
 
         DisplayIndexChildrenServer(m_listIndexChildObjectDisplay);
 
@@ -152,6 +152,18 @@ public class testrandom : NetworkBehaviour
             {
                 if (child.gameObject.activeInHierarchy == true)
                     child.GetComponent<SpawnPoint>().SpawnItem();
+            }
+        }
+    }
+
+    public void DespawmItemsInChildrenObj()
+    {
+        if (IsServer)
+        {
+            foreach (Transform child in this.transform)
+            {
+                if (child.gameObject.activeInHierarchy == true)
+                    child.transform.GetChild(0).GetComponent<NetworkObject>().Despawn();
             }
         }
     }

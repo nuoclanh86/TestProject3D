@@ -352,6 +352,11 @@ MonoBehaviour:
       SourcePrefabToOverride: {fileID: 0}
       SourceHashToOverride: 0
       OverridingTargetPrefab: {fileID: 0}
+    - Override: 0
+      Prefab: {fileID: 3522875929988841763, guid: 39f02c5dfe59fc942a59898def34d448, type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
     TickRate: 30
     ClientConnectionBufferTimeout: 10
     ConnectionApproval: 0
@@ -407,7 +412,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1194837503
 GameObject:
@@ -569,7 +574,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &189321677852447281
 PrefabInstance:
@@ -580,7 +585,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 189321677793094906, guid: 90f30f4ee28a6f44591038a60f0a5ab4, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 189321677793094906, guid: 90f30f4ee28a6f44591038a60f0a5ab4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -667,6 +672,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1292227742543503789, guid: 3eb824292fd70f045a8993e2444c9b2c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 93224652}
+    - target: {fileID: 1292227742543503789, guid: 3eb824292fd70f045a8993e2444c9b2c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SpawmItemsInChildrenObj
+      objectReference: {fileID: 0}
     - target: {fileID: 2044204612382719316, guid: 3eb824292fd70f045a8993e2444c9b2c, type: 3}
       propertyPath: nwManager
       value: 
@@ -685,7 +698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2044204613795752481, guid: 3eb824292fd70f045a8993e2444c9b2c, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2044204613795752481, guid: 3eb824292fd70f045a8993e2444c9b2c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -762,6 +775,14 @@ PrefabInstance:
     - target: {fileID: 2044204613795752493, guid: 3eb824292fd70f045a8993e2444c9b2c, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753848416436998240, guid: 3eb824292fd70f045a8993e2444c9b2c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 93224652}
+    - target: {fileID: 5753848416436998240, guid: 3eb824292fd70f045a8993e2444c9b2c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DespawmItemsInChildrenObj
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3eb824292fd70f045a8993e2444c9b2c, type: 3}

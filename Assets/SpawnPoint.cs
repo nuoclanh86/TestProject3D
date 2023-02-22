@@ -18,7 +18,9 @@ public class SpawnPoint : NetworkBehaviour
         if (itemPrefab != null)
         {
             GameObject result = null;
-            result = Instantiate(itemPrefab, this.transform.position, Quaternion.identity);
+            Vector3 posSpawn = this.transform.position;
+            posSpawn.y += 1;
+            result = Instantiate(itemPrefab, posSpawn, Quaternion.identity);
             result.GetComponent<NetworkObjectController>().SetNetworkObjParentServer(this.transform);
             result.GetComponent<NetworkObject>().Spawn(true);
         }
