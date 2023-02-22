@@ -83,13 +83,11 @@ public class PickupWobbleAndSpinEffect : MovableObstacles
         {
             return;
         }
-        Debug.Log("NuocLanh DoMove");
+
         targetPos = direction * distance;
 
         mySequence = DOTween.Sequence();
-        mySequence.Append(transform.DOLocalMove(transform.localPosition + targetPos, firstInHalfDuration).SetEase(firstEaseType));
-        mySequence.Join(transform.DOLocalRotate(transform.localRotation.eulerAngles + rotDirection1, firstInHalfDuration, RotateMode.FastBeyond360).SetEase(Ease.Linear));
-        mySequence.Append(transform.DOLocalMove(transform.localPosition, firstOutHalfDuration).SetEase(secondEaseType));
+        mySequence.Append(transform.DOLocalRotate(transform.localRotation.eulerAngles + rotDirection1, firstInHalfDuration, RotateMode.FastBeyond360).SetEase(Ease.Linear));
         mySequence.Join(transform.DOLocalRotate(transform.localRotation.eulerAngles + rotDirection2, firstOutHalfDuration, RotateMode.FastBeyond360).SetEase(Ease.Linear));
 
         mySequence.SetLoops(-1);
@@ -97,5 +95,10 @@ public class PickupWobbleAndSpinEffect : MovableObstacles
         // {
         //     mySequence.SetUpdate(UpdateType.Manual);
         // }
+    }
+
+    void OnDestroy()
+    {
+        mySequence.Kill();
     }
 }
