@@ -73,6 +73,10 @@ namespace KinematicCharacterController.Examples
 
         public CharacterState CurrentCharacterState { get; private set; }
 
+        [Header("Sync Animation")]
+        public Animator playerAnimator;
+        public string speedParam;
+
         private Collider[] _probedColliders = new Collider[8];
         private RaycastHit[] _probedHits = new RaycastHit[8];
         private Vector3 _moveInputVector;
