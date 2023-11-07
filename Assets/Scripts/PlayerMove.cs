@@ -12,13 +12,12 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         nmAgent = this.GetComponent<NavMeshAgent>();
-        if (nmAgent != null)
-            nmAgent.SetDestination(target.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (nmAgent != null)
+            nmAgent.SetDestination(target.position);
     }
 }
